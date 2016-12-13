@@ -1,1 +1,29 @@
-hello world
+Reinforcement learning has drawn an extraordinary attention when the Alpha-Go won an overwhelming victory in the battle with the human world champion Lee Sedol with score 4-1.  A bunch of artificial intelligence technologies is utilized in the Alpha-Go program, including XXX, XXX, XX (detailed in ~~~). The Alpha-Go is developed by DeepMind, which has been purchased by Google for XX dollar in 201XX. The deep reinforcement learning is also been used to create a human-level agent that can play Atari game, and even beat human-level in some games (). On the other hand, automatic / artificial intelligent trading system is a hot topic across the whole financial industry. It is very interesting to see if deep reinforcement learning works in the trading field. In this article, I will show you how to implement a DRL algorithm into the fx trading.
+
+Principle
+
+The core mission of reinforcement learning is to find the optimal action-value formula by which the agent can take the action leading to the maximum expected value.
+
+Q*(s,a) = Εs'[r+ϒmaxQ*(s',a')|s,a]
+
+The parameters are defined as:
+
+a set of environment and agent states s;
+a set of actions a taken by the agent;
+discount factor ϒ;
+reward function Q(s,a) when the agent takes the action a at the state s.
+In order to understand this function simply, we take an example of self-driving car. When a self-driving car is coming to a cross with red light at its direction, let's say two actions can be triggered: stop or continue. As a safe self-driving system, the action stop would give a positive return at this red light state according to the reward function, therefore the car agent would choose to stop when the car sensing a red light in front of it.
+
+Actually, there are other parameters/factors defined in the traditional reinforcement, such as the function interpreting the environment (e.x. image processing network). We just skip those things because the price can be utilized directly to describe the environmental state.
+
+Modeling
+
+Similarly, in terms of FX trading, the state would be the previous close price, max price, min price, volume, and etc. To make this demonstration straight, we use the daily change percent of the USD/GBR close price of previous 100 days to express the state. The action options are buy, sell and hold.
+
+In the context of deep reinforcement learning, we use a neural network to express the policy to determine the reward of each action at a specific state. In other words, via this neural network, it gives us the expected returns if we buy, sell or hold the trading position. Then we choose to execute the action with the highest expected return.
+
+state: s(Δp0)
+
+Training neural network is always a
+
+The training of the neural network has some key points need to be notice:
